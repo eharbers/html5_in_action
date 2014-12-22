@@ -72,6 +72,40 @@
 		};
 
 		qtyListeners();
+
+		var doCustomValidity = function (field, msg) {
+			if('setCustomValidity' in field) {
+				field.setCustomValidity(msg);
+			} else {
+				field.validationMessage = msg;
+			}
+		};
+
+		var validateForm = function() {
+			doCustomValidity(orderForm.name, '');
+			doCustomValidity(orderForm.password, '');
+			doCustomValidity(orderForm.confirm_password, '');
+			doCustomValidity(orderForm.card_name, '');
+
+			if(orderForm.name.value.length < 4) {
+				doCustomValidity(orderForm.name, 'Full name must be at least 4 characters long');
+			}
+
+			if(orderForm.password.value.length < 8) {
+				doCustomValidity(orderForm.password, 'Password must be at least 8 character long');
+			}
+
+			if(orderForm.password.value != orderForm.confirm_password.value) {
+				doCustomValidity(orderForm.confirm_password, 'Confirm Password must match Password');
+			}
+
+			if(orderForm.card_name.value.length <4) {
+				doCustomValidity(orderForm.card_name, 'Name on Card must be at least 4 characters long');
+			}
+		};
+
+		orderForm.addEventListener('input', validateForm, false);
+		orderForm.addEventListener('keyup', validateForm, false);
 	};
 	window.addEventListener('load', init, false);
 }) ();
