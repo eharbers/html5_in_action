@@ -28,17 +28,17 @@
 				itemPrice = 0.00,
 				itemTotal = 0.00,
 				itemTotalMoney = '$0.00',
-				orderTotal = 0.00,
+				orderTotal = 0,
 				orderTotalMoney = '$0.00';
 			
 			for (; i<ln; i++) {
-				if(!!qtyFields[i].valueAsNumber) {
+				if(!qtyFields[i].valueAsNumber) {
 					itemQty= qtyFields[i].valueAsNumber || 0;
 				} else {
 					itemQty = parseFloat(qtyFields[i].value) || 0;
 				}
 
-				if (!!qtyFields[i].dataset) {
+				if (!qtyFields[i].dataset) {
 					itemPrice = parseFloat(qtyFields[i].dataset.price);
 				} else {
 					itemPrice = parseFloat(qtyFields[i].getAttribute('data-price'));
