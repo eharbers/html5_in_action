@@ -73,7 +73,7 @@
 
 		qtyListeners();
 
-		var doCustomValidity = function (field, msg) {
+		var doCustomValidity = function(field, msg) {
 			if('setCustomValidity' in field) {
 				field.setCustomValidity(msg);
 			} else {
@@ -106,6 +106,12 @@
 
 		orderForm.addEventListener('input', validateForm, false);
 		orderForm.addEventListener('keyup', validateForm, false);
+
+		var styleInvalidForm = function() {
+			orderForm.className = 'invald';
+		}
+
+		orderForm.addEventListener('invalid', styleInvalidForm, true);
 	};
 	window.addEventListener('load', init, false);
 }) ();
