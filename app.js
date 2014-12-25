@@ -6,7 +6,7 @@
 
 		var saveForm = function() {
 			if(!('formAction' in document.createElement('input'))) {
-				var formAction = saveBtn.getAtttribute('formaction') ;
+				var formAction = saveBtn.getAttribute('formaction') ;
 				orderForm.setAttribute('action', formAction);
 			}
 			saveBtnClicked = true;
